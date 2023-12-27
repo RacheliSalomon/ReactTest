@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {  useState, useRef } from "react";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
@@ -33,13 +33,18 @@ const AddPostDialog = (props) => {
   const toast = useRef(null);
 
   //Adds the new post and update the posts list
-  const fetch = () => {
+  const fetch =async () => {
     const bodyReq={ 'title': title, 'body': body, 'userId': props.userId }
-    fetchPost(bodyReq);
-    newPost[props.userId] != undefined ? newPost[props.userId].push(bodyReq) : newPost[props.userId] = [bodyReq]
-    toast.current.show({ severity: 'info', summary: 'Success', detail: 'Add your post!😀' });
+    const res= await fetchPost(bodyReq);
+    console.log(res);
+    
+
     //Indicates that a new fetch must be done in order to display the updated list of posts
-    props.setAdd(add=>!add)
+    res===201&&toast.current.show({ severity: 'info', summary: 'Success', detail: 'Add your post!😀' })&&newPost[props.userId] !== undefined ? newPost[props.userId].push(bodyReq) : newPost[props.userId] = [bodyReq]&& props.setAdd(add=>!add)
+    res===400&&toast.current.show({ severity: 'warn', summary: 'Error', detail: 'oops. 😫 Fashlanation 😛😛' });
+    res===500&&toast.current.show({ severity: 'error', summary: 'Error', detail: 'You have an error😪 Try later' });
+
+   
 
   };
   

@@ -3,8 +3,7 @@ import UsersDataTable from "./components/usersDataTable";
 
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
-import { Divider } from 'primereact/divider';
-import React, { useState, useEffect, Children } from 'react';
+import React, { useState } from 'react';
 function App() {
 
   const [selectedUser,setSelectedUser]=useState(null)

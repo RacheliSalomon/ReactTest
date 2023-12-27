@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, Children } from 'react';
-import { FilterMatchMode, FilterOperator } from 'primereact/api';
+import React, { useState, useEffect } from 'react';
+import { FilterMatchMode } from 'primereact/api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
@@ -17,11 +17,12 @@ const UsersDataTable=(props) =>{
     
     //fetch all users
     useEffect(() => {
-        fetchGet('https://jsonplaceholder.typicode.com/users',setUsers,setLoading);    
+        fetchGet('https://jsonplaceholder.typicode.com/users',setUsers);   
+        setLoading(false)         
     },[])
 
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
 
 

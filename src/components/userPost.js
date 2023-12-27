@@ -1,15 +1,11 @@
 
 
 import React, { useState, useEffect } from "react";
-import { Button } from "primereact/button";
 import { DataView } from "primereact/dataview";
 import { Card } from "primereact/card";
-import { Rating } from "primereact/rating";
-import { Tag } from "primereact/tag";
 import useFetch from "../hooks/useFetch";
 import "primeflex/primeflex.css";
 import AddPostDialog from "./addPostDialog";
-import { DataScroller } from 'primereact/datascroller';
 
 
 
@@ -30,7 +26,7 @@ const UserPost = (props) => {
   const [posts, setPosts] = useState([]);
 
   
-  const[loading,setLoading]=useState(false)
+  const[loading,setLoading]=useState(true)
 
   //Indicates whether to add a new post to the list of posts
   const [add,setAdd]=useState(false)
@@ -40,10 +36,10 @@ const UserPost = (props) => {
     () => {
     
         
-        if(props.sUser!=null){
+        if(props.sUser!==null){
           setUrl(`https://jsonplaceholder.typicode.com/posts?userId=${props.sUser.id}`);
 
-          if(newPost[props.sUser.id]!=undefined){
+          if(newPost[props.sUser.id]!==undefined){
             setPosts(newPost[props.sUser.id]);
           }
           else{
@@ -62,15 +58,9 @@ const UserPost = (props) => {
   //Fetches posts when the URL changes or adding a post
   useEffect(
     () =>{ 
-      fetchGet(url, setPosts,setLoading);
+      fetchGet(url, setPosts);
+      setLoading(false)
     }, [url,add]);
-
-
-
-
-
-
-
 
 
   //Gets a post and returns a view for it
