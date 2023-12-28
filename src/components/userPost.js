@@ -58,7 +58,8 @@ const UserPost = (props) => {
   //Fetches posts when the URL changes or adding a post
   useEffect(
     () =>{ 
-      fetchGet(url, setPosts);
+      if(url!="")
+        fetchGet(url, setPosts);
       setLoading(false)
     }, [url,add]);
 
