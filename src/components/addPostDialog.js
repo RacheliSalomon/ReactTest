@@ -70,7 +70,7 @@ const AddPostDialog = (props) => {
         />
 
         <Button
-          icon="pi pi-plus"
+          label="Add"
           outlined
           className="mt-2"
           onClick={() => setValidation(true)}
@@ -100,7 +100,7 @@ const AddPostDialog = (props) => {
           </p>
         </div>
 
-        <Button icon="pi pi-check" label="Confirm" outlined onClick={() => fetch()} className="mt-5" />
+        <Button label="Confirm" outlined onClick={() => fetch()} className="mt-5" />
         <Toast ref={toast} position="center" onHide={colseDialog} />
       </>
 
