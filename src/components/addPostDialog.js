@@ -3,7 +3,6 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import "primeicons/primeicons.css";
 import useFetch from "../hooks/useFetch";
 import { Toast } from 'primereact/toast';
 
